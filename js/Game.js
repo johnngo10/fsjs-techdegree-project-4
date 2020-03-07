@@ -6,7 +6,7 @@ class Game {
   constructor(missed, phrases, activePhrase) {
     this.missed = 0;
     this.phrases = this.createPhrases();
-    this.activePhrase = null;
+    this.activePhrase = this.getRandomPhrase();
   }
 
   /**
@@ -36,5 +36,13 @@ class Game {
     return this.phrases[randomNum];
   }
 
-  startGame() {}
+  /**
+   * Begins game by selecting a random phrase and displaying it to user
+   */
+  startGame() {
+    const overlay = document.getElementById("overlay");
+    overlay.style.display = "none";
+    const phrase = new Phrase(this.activePhrase.phrase);
+    phrase.addPhraseToDisplay();
+  }
 }

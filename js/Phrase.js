@@ -17,11 +17,9 @@ class Phrase {
     console.log(thePhrase);
     for (let i = 0; i < thePhrase.length; i++) {
       if (thePhrase[i] !== " ") {
-        console.log("letter");
         phraseList.innerHTML += `<li class="hide letter ${thePhrase[i]}">${thePhrase[i]}</li>`;
       } else if (thePhrase[i] === " ") {
-        console.log("space");
-        phraseList.innerHTML += `<li class="space"></li>`;
+        phraseList.innerHTML += `<li class="space"> </li>`;
       }
     }
   }
