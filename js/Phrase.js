@@ -14,7 +14,6 @@ class Phrase {
     const phraseDisplay = document.getElementById("phrase");
     const phraseList = phraseDisplay.firstElementChild;
     const thePhrase = this.phrase;
-    console.log(thePhrase);
     for (let i = 0; i < thePhrase.length; i++) {
       if (thePhrase[i] !== " ") {
         phraseList.innerHTML += `<li class="hide letter ${thePhrase[i]}">${thePhrase[i]}</li>`;
@@ -24,7 +23,33 @@ class Phrase {
     }
   }
 
-  checkLetter() {}
+  /**
+   * Checks if passed letter is in phrase
+   * @param (string) letter - Letter to check
+   */
+  checkLetter(letter) {
+    const phrase = game.activePhrase;
 
-  showMatchedLetter() {}
+    if (phrase.indexOf(letter) > -1) {
+      return true;
+    } else if (phrase.indexOf(letter) < 0) {
+      return false;
+    }
+  }
+
+  /**
+   * Displays passed letter on screen after a match is found
+   * @param (string) letter - Letter to display
+   */
+  showMatchedLetter(letter) {
+    const phraseLetters = document.querySelectorAll(".letter");
+    // const checkLetter = this.checkLetter();
+
+    for (let i = 0; i < phraseLetters.length; i++) {
+      if (letter === phraseLetters[i].textContent) {
+        phraseLetters[i].classList.remove("hide");
+        phraseLetters[i].classList.add("show");
+      }
+    }
+  }
 }
