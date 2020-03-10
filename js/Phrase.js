@@ -30,7 +30,7 @@ class Phrase {
   checkLetter(letter) {
     const phrase = game.activePhrase;
 
-    if (phrase.indexOf(letter) > -1) {
+    if (phrase.indexOf(letter.textContent) > -1) {
       return true;
     } else if (phrase.indexOf(letter) < 0) {
       return false;
@@ -43,10 +43,9 @@ class Phrase {
    */
   showMatchedLetter(letter) {
     const phraseLetters = document.querySelectorAll(".letter");
-    // const checkLetter = this.checkLetter();
 
     for (let i = 0; i < phraseLetters.length; i++) {
-      if (letter === phraseLetters[i].textContent) {
+      if (letter.textContent === phraseLetters[i].textContent) {
         phraseLetters[i].classList.remove("hide");
         phraseLetters[i].classList.add("show");
       }

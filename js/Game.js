@@ -49,7 +49,26 @@ class Game {
     phrase.addPhraseToDisplay();
   }
 
-  handleInteraction() {}
+  /**
+   * Handles game interactions
+   */
+
+  handleInteraction(button) {
+    const check = phrase.checkLetter(button);
+    const show = new Phrase();
+    const checkWin = this.checkForWin();
+
+    if (check === false) {
+      button.className = "wrong";
+      this.removeLife();
+    } else if (check === true) {
+      button.className = "chosen";
+      show.showMatchedLetter(button);
+      if (this.checkForWin() === true) {
+        this.gameOver(true);
+      }
+    }
+  }
 
   /**
   * Checks for winning move
@@ -58,13 +77,12 @@ class Game {
   */
   checkForWin() {
     const phraseLetters = document.querySelectorAll(".letter");
+    const shownLetters = document.querySelectorAll(".show");
 
-    for (let i = 0; i < phraseLetters.length; i++) {
-      if (phraseLetters[i].classList.contains("hide")) {
-        return false;
-      } else {
-        return true;
-      }
+    if (phraseLetters.length === shownLetters.length) {
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -75,20 +93,10 @@ class Game {
    */
   removeLife() {
     const hearts = document.querySelector("img[src='images/liveHeart.png']");
-    console.log(hearts);
-    // const checkLetter = new Phrase().checkLetter();
-
-    // for (let i = 0; i < hearts.length; i++) {
-    //   if (checkLetter === false) {
-    //     hearts[i].firstElementChild.src = "images/lostHeart.png";
-    //     this.missed += 1;
-    //   }
-    // }
 
     if (hearts.src !== "images/lostHeart.png") {
       hearts.src = "images/lostHeart.png";
       this.missed += 1;
-      console.log(this.missed);
     }
 
     if (this.missed === 5) {
@@ -109,13 +117,11 @@ class Game {
       overlay.classList.remove("start");
       overlay.classList.add("win");
       overlay.style.display = "block";
-      console.log("won");
     } else if (gameWon === false) {
       message.textContent = "Try Again!";
       overlay.classList.remove("start");
       overlay.classList.add("lose");
       overlay.style.display = "block";
-      console.log("lost");
     }
   }
 }
