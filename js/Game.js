@@ -124,4 +124,37 @@ class Game {
       overlay.style.display = "block";
     }
   }
+
+  /**
+   * Reset Game
+   */
+
+  resetGame() {
+    const phraseList = document.getElementById("phrase").firstElementChild;
+    const keyboard = document.getElementById("qwerty");
+    const keys = keyboard.querySelectorAll("button");
+    const heartImg = document.querySelectorAll("img[alt='Heart Icon']");
+
+    phraseList.innerHTML = "";
+    this.missed = 0;
+
+    for (let i = 0; i < keys.length; i++) {
+      if (keys[i].className === "chosen") {
+        keys[i].className = "key";
+        keys[i].removeAttribute("disabled");
+      } else if (keys[i].className === "wrong") {
+        keys[i].className = "key";
+        keys[i].removeAttribute("disabled");
+      }
+    }
+
+    for (let i = 0; i < heartImg.length; i++) {
+      if (heartImg[i].src !== "images/liveHeart.png") {
+        heartImg[i].src = "images/liveHeart.png";
+        console.log("yes");
+      } else {
+        console.log(heartImg[i].src);
+      }
+    }
+  }
 }

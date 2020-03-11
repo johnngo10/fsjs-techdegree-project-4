@@ -6,6 +6,7 @@ const game = new Game();
 const phrase = new Phrase();
 
 document.getElementById("btn__reset").addEventListener("click", () => {
+  game.resetGame();
   game.startGame();
 });
 
