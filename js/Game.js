@@ -134,6 +134,7 @@ class Game {
     const keyboard = document.getElementById("qwerty");
     const keys = keyboard.querySelectorAll("button");
     const heartImg = document.querySelectorAll("img[alt='Heart Icon']");
+    const overlay = document.getElementById("overlay");
 
     phraseList.innerHTML = "";
     this.missed = 0;
@@ -151,10 +152,13 @@ class Game {
     for (let i = 0; i < heartImg.length; i++) {
       if (heartImg[i].src !== "images/liveHeart.png") {
         heartImg[i].src = "images/liveHeart.png";
-        console.log("yes");
-      } else {
-        console.log(heartImg[i].src);
       }
+    }
+
+    if (overlay.classList.contains("win")) {
+      overlay.classList.remove("win");
+    } else if (overlay.classList.contains("lose")) {
+      overlay.classList.remove("lose");
     }
   }
 }
