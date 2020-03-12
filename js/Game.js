@@ -135,10 +135,11 @@ class Game {
     const keys = keyboard.querySelectorAll("button");
     const heartImg = document.querySelectorAll("img[alt='Heart Icon']");
     const overlay = document.getElementById("overlay");
-
+    // empty phrase from display
     phraseList.innerHTML = "";
+    // reset missed
     this.missed = 0;
-
+    // reset key buttons
     for (let i = 0; i < keys.length; i++) {
       if (keys[i].className === "chosen") {
         keys[i].className = "key";
@@ -148,13 +149,13 @@ class Game {
         keys[i].removeAttribute("disabled");
       }
     }
-
+    // reset hearts
     for (let i = 0; i < heartImg.length; i++) {
       if (heartImg[i].src !== "images/liveHeart.png") {
         heartImg[i].src = "images/liveHeart.png";
       }
     }
-
+    // reset overlay
     if (overlay.classList.contains("win")) {
       overlay.classList.remove("win");
     } else if (overlay.classList.contains("lose")) {

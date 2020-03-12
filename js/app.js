@@ -20,3 +20,9 @@ keyboard.addEventListener("click", btn => {
     button.setAttribute("disabled", "");
   }
 });
+
+window.addEventListener("keyup", e => {
+  const keypress = e.key;
+
+  game.handleInteraction(keypress);
+});
