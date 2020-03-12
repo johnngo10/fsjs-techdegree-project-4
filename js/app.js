@@ -5,6 +5,7 @@
 const game = new Game();
 const phrase = new Phrase();
 
+// start game or reset game
 document.getElementById("btn__reset").addEventListener("click", () => {
   game.resetGame();
   game.startGame();
@@ -12,6 +13,7 @@ document.getElementById("btn__reset").addEventListener("click", () => {
 
 const keyboard = document.getElementById("qwerty");
 
+// disable clicked buttons
 keyboard.addEventListener("click", btn => {
   const button = btn.target;
 
