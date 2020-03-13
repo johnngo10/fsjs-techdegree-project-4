@@ -116,12 +116,12 @@ class Game {
       message.textContent = "You Won";
       overlay.classList.remove("start");
       overlay.classList.add("win");
-      overlay.style.display = "block";
+      overlay.style.display = "flex";
     } else if (gameWon === false) {
       message.textContent = "Try Again!";
       overlay.classList.remove("start");
       overlay.classList.add("lose");
-      overlay.style.display = "block";
+      overlay.style.display = "flex";
     }
   }
 
