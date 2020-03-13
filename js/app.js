@@ -26,6 +26,12 @@ keyboard.addEventListener("click", btn => {
 // User keyboard input
 window.addEventListener("keyup", e => {
   const keypress = e.key;
+  const keyboard = document.getElementById("qwerty");
+  const keys = keyboard.querySelectorAll("button");
 
-  game.handleInteraction(keypress);
+  for (let i = 0; i < keys.length; i++) {
+    if (keypress === keys[i].textContent) {
+      game.handleInteraction(keys[i]);
+    }
+  }
 });
